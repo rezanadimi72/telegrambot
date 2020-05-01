@@ -39,6 +39,7 @@ class Telegram
             return false;
     }
 
+
     public function sendMessage($data)
     {
         return $this->curlExecute('sendMessage', $data);
