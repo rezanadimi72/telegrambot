@@ -54,7 +54,6 @@ class Telegram
         return $this->curlExecute('editMessageReplyMarkup', $data);
     }
 
-
     public function sendPhotoByUrl($data)
     {
         return $this->curlExecute('sendPhoto', $data);
