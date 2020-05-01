@@ -4,31 +4,43 @@ namespace rezanadimi\telegram;
 
 class Telegram
 {
-    public $API_KEY = null;
-    public $telegramUrl;
+    private $API_KEY = null;
+    private $telegramUrl;
+    private $input;
 
-    public function __construct($your_api_key = null)
+    public function __construct($your_api_key)
     {
         $this->API_KEY = $your_api_key;
         $this->telegramUrl = 'https://api.telegram.org/bot' . $this->API_KEY . '/';
     }
 
+    public function getInput()
+    {
+        $input = file_get_contents("php://input");
+        $this->input = json_decode($input, true);
+        return $this->input;
+    }
+
+    public function is_callback()
+    {
+        $input = $this->getInput();
+        if (!empty($input['callback_query']))
+            return true;
+        else
+            return false;
+    }
+
+    public function is_message()
+    {
+        $input = $this->getInput();
+        if (!empty($input['message']))
+            return true;
+        else
+            return false;
+    }
+
     public function sendMessage($data)
     {
-        return $this->curlExecute('sendMessage', $data);
-    }
-
-    public function sendHtmlMessage($text, $chat_id)
-    {
-
-        $data = array("chat_id" => $chat_id, "text" => $text, "parse_mode" => 'HTML');
-        return $this->curlExecute('sendMessage', $data);
-    }
-
-    public function sendMarkdownMessage($text, $chat_id)
-    {
-
-        $data = array("chat_id" => $chat_id, "text" => $text, "parse_mode" => 'Markdown');
         return $this->curlExecute('sendMessage', $data);
     }
 
@@ -42,42 +54,14 @@ class Telegram
         return $this->curlExecute('editMessageReplyMarkup', $data);
     }
 
-    public function sendWithKeyboardMessage($data)
-    {
-        $keyboard = [
-            ['hi']
-        ];
-        $reply_markup = array(
-            'keyboard' => $keyboard,
-            'resize_keyboard' => true,
-            'one_time_keyboard' => true
-        );
-        $param = array("chat_id" => $data['chat_id'], "text" => $data['text'], "reply_markup" => $reply_markup);
-        return $this->curlExecute('sendMessage', $data);
-    }
 
-    public function sendWithInlineKeyboardMessage($text, $chat_id, $keyboard)
+    public function sendPhotoByUrl($data)
     {
-
-        /* $reply_markup = array(
-             'keyboard' => $keyboard,
-             'resize_keyboard' => true,
-             'one_time_keyboard' => true
-         );*/
-        $data = array("chat_id" => $chat_id, "text" => $text, "reply_markup" => $keyboard);
-        return $this->curlExecute('sendMessage', $data);
-    }
-
-    public function sendPhotoByUrl($caption = "", $url, $chat_id)
-    {
-        $data = array("chat_id" => $chat_id, "photo" => $url, "caption" => $caption);
         return $this->curlExecute('sendPhoto', $data);
     }
 
-    public function sendVideoByUrl($caption = "", $url, $chat_id)
+    public function sendVideoByUrl($data)
     {
-
-        $data = array("chat_id" => $chat_id, "video" => $url, "caption" => $caption);
         return $this->curlExecute('sendVideo', $data);
     }
 
@@ -86,7 +70,6 @@ class Telegram
         $url = $this->telegramUrl . $action;
         try {
             $ch = curl_init();
-
             if (FALSE === $ch)
                 throw new Exception('failed to initialize');
             $data_string = json_encode($data);

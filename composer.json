@@ -12,12 +12,13 @@
   "license": "LGPL-3.0+",
   "authors": [
     {
-      "name": "Reza nadimi",
+      "name": "Reza Nadimi",
       "email": "rezanadimi88@gmail.ocm"
     }
   ],
   "require": {
-    "yiisoft/yii2": "*"
+    "yiisoft/yii2": "*",
+    "ext-curl": "*"
   },
   "autoload": {
     "psr-4": {
