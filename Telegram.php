@@ -39,13 +39,7 @@ class Telegram
 
     public function editMessageReplyMarkup($data)
     {
-        $reply_markup = array(
-            'keyboard' => $data['keyboard'],
-            'resize_keyboard' => true,
-            'one_time_keyboard' => true
-        );
-        $param = array("chat_id" => $data['chat_id'], "message_id" => $data['message_id'], 'reply_markup' => $reply_markup);
-        return $this->curlExecute('editMessageReplyMarkup', $param);
+        return $this->curlExecute('editMessageReplyMarkup', $data);
     }
 
     public function sendWithKeyboardMessage($data)
