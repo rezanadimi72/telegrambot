@@ -9,10 +9,7 @@ class Telegram
 
     public function __construct($your_api_key = null)
     {
-        if (empty($your_api_key))
-            $this->API_KEY = '821374592:AAEfIdcGaN_GclPyOD-v56ORx2u95Qk3me8';
-        else
-            $this->API_KEY = $your_api_key;
+        $this->API_KEY = $your_api_key;
         $this->telegramUrl = 'https://api.telegram.org/bot' . $this->API_KEY . '/';
     }
 
