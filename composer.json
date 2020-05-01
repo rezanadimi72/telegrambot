@@ -1,0 +1,27 @@
+{
+  "name": "rezanadimi/rezanadimi-yii2-telegram",
+  "description": "bot telegram",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension",
+    "rezanadimi",
+    "telegram",
+    "bot"
+  ],
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Reza nadimi",
+      "email": "rezanadimi88@gmail.ocm"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "rezanadimi\\telegram\\": ""
+    }
+  }
+}
