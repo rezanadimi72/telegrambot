@@ -1,6 +1,6 @@
 <?php
 
-namespace rezanadimi\telegrambot\telegram;
+namespace rezanadimi\telegrambot;
 class Callback
 {
     public $updateID;

@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "rezanadimi\\telegrambot\\telegram\\": ""
+      "rezanadimi\\telegrambot\\": ""
     }
   }
 }

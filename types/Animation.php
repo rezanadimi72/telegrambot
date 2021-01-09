@@ -1,5 +1,5 @@
 <?php
-namespace rezanadimi\telegram\types;
+namespace rezanadimi\telegrambot\types;
 
 
 
