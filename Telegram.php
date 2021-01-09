@@ -1,12 +1,12 @@
 <?php
 
-namespace rezanadimi\telegram;
+namespace rezanadimi\telegrambot\telegram;
 
 /**
  * Class Telegram
  * @package rezanadimi\telegram
  * @var $callback Callback;
- * @var $message Message;
+ * @var $message Callback;
  */
 class Telegram
 {
