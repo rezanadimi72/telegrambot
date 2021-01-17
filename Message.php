@@ -1,6 +1,6 @@
 <?php
 
-namespace rezanadimi\telegrambot;
+namespace rezanadimi\telegram;
 class Message
 {
     public $updateID;

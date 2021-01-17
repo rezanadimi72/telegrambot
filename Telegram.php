@@ -1,6 +1,8 @@
 <?php
 
-namespace rezanadimi\telegrambot;
+namespace rezanadimi\telegram;
+
+use yii\base\Exception;
 
 /**
  * Class Telegram
@@ -101,10 +103,7 @@ class Telegram
             return true;
         } catch (Exception $e) {
 
-            trigger_error(sprintf(
-                'Curl failed with error #%d: %s',
-                $e->getCode(), $e->getMessage()),
-                E_USER_ERROR);
+
             return false;
 
         }
